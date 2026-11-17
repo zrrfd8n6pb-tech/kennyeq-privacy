@@ -8,33 +8,35 @@
 </head>
 <body>
   <h1>KennyEQ Privacy Policy</h1>
-  <p>Last updated: September 26, 2026</p>
-  <p>KennyEQ is an audio equalizer application. This Privacy Policy explains how the app handles information and device permissions.</p>
-
-  <h2>Data collection and sharing</h2>
-  <p>KennyEQ does not require an account and does not collect, sell, or share personal information with third parties. The app does not include advertising or analytics SDKs.</p>
-
-  <h2>Device permissions</h2>
-  <p>KennyEQ may request device permissions only to provide its audio and user-interface features:</p>
+  <p>Last updated: November 17, 2026</p>
+  <p>KennyEQ is an audio equalizer application. This policy explains its on-device information handling, optional permissions and user controls.</p>
+  <h2>Version scope</h2>
+  <p>The detailed implementation descriptions below refer to KennyEQ 1.2.78 (version code 201585), the prepared replacement release. This does not mean that this release is already available through Google Play. Older test releases can differ in their permission and shortcut implementation; they are not represented here as having identical behavior. The <a href="https://github.com/zrrfd8n6pb-tech/kennyeq-privacy/blob/8c5293e3dba5535600ac1977e236b79c7c4d7a64/index.html">previous policy dated September 26, 2026</a> remains available for reference. Please include your app version when asking about an older release.</p>
+  <h2>Local data and diagnostics</h2>
+  <p>Version 1.2.78 does not require a user account and does not include advertising or analytics SDKs. Equalizer settings, profiles, shortcut timing and consent choices are stored locally. Its audio-effect and shortcut processing takes place on the device.</p>
+  <p>Local diagnostic logging is distinct from background accessibility processing. While the KennyEQ screen handles remote navigation, it can write selected navigation/media key codes and action information to Android diagnostic logs. Service status and errors can also be logged. This is not a claim that no diagnostic data exists. The accessibility shortcut implementation does not log the remote-key codes it processes in the background, or save or transmit its key/window information.</p>
+  <p>If you choose to email support, the contact address and information or files you send will be received for handling your request. Do not send passwords or unrelated personal information. Android manages diagnostic-log retention; local app preferences can be removed through Android's app-data controls, which also remove your saved settings.</p>
+  <h2>Optional accessibility shortcut</h2>
+  <p>KennyEQ is an equalizer, not an accessibility tool. Its optional TV remote shortcut uses Android AccessibilityService to open KennyEQ when you briefly press and release OK, then press Down within the configured interval while another app is visible. The service is needed because KennyEQ's own screen cannot receive that sequence when another app is in the foreground.</p>
+  <p>The service processes remote-key codes and press/release timing locally. It checks window types to suppress the shortcut while an on-screen keyboard is visible. Android grants a window-content capability for this configuration, but the version 1.2.78 implementation does not read screen text, typed text or passwords. It does not use accessibility events to select a profile based on the foreground app; the shortcut opens the global equalizer.</p>
+  <p>In-app consent and separate Android accessibility permission are required. You can decline and use the app icon instead. To turn off an existing Android grant, disable KennyEQ in Android Accessibility settings; declining an in-app prompt does not revoke an earlier Android grant. Shortcut keys are not consumed, so the underlying app may also respond.</p>
+  <h2>Audio and foreground operation</h2>
+  <p>KennyEQ retains user-enabled Android audio-effect controllers for supported playback sessions from other apps. It does not itself play media. Effects depend on the device and supported session; not all audio is guaranteed to be processed. The foreground service and its ongoing notification support this operation. The app's Fully close control stops the equalizer service.</p>
+  <p>On supported non-TV devices, a separate optional foreground service maintains a visible floating shortcut while other apps are displayed. This service is not media playback and is intentionally skipped on Android TV. Display-over-other-apps permission is used for this optional overlay.</p>
+  <p>Audio visualization uses Android Visualizer to process playback spectrum information locally. The Android RECORD_AUDIO permission name does not mean that the visualizer records microphone audio. The inspected visualization implementation does not create or upload audio recordings.</p>
+  <h2>Other device permissions</h2>
   <ul>
-    <li><strong>Microphone/audio access:</strong> used locally for audio visualization and equalizer-related functions. Audio is not recorded, uploaded, or shared.</li>
-    <li><strong>Modify audio settings and foreground media service:</strong> used to apply equalizer settings while audio plays.</li>
-    <li><strong>Notifications:</strong> used to show the active equalizer service notification.</li>
-    <li><strong>Display over other apps:</strong> used only when an optional equalizer overlay is enabled by the user.</li>
-    <li><strong>Accessibility service:</strong> used only after the user enables it, to support the app's optional audio-control workflow. It is not used to collect, transmit, or share personal data.</li>
-    <li><strong>Installed-app visibility:</strong> used locally to identify compatible audio applications and sessions. The app list is not transmitted or shared.</li>
-    <li><strong>System settings and battery optimization requests:</strong> used only when the user chooses features that need these settings for reliable audio operation.</li>
+    <li><strong>Modify audio settings:</strong> supports the equalizer's audio-effect functions.</li>
+    <li><strong>Notifications:</strong> shows ongoing service notifications where supported and permitted.</li>
+    <li><strong>App and audio-session information:</strong> may be used locally for compatible audio-session and profile functions. This is separate from the accessibility shortcut and does not establish foreground-app tracking by that service.</li>
+    <li><strong>System settings and battery optimization requests:</strong> are presented for optional features that need these settings for reliable operation. You decide whether to grant them.</li>
   </ul>
-
   <h2>Data security</h2>
-  <p>Audio-processing and device-control operations are performed locally on the device. KennyEQ does not operate a server for collecting user information.</p>
-
+  <p>Keep your device and operating system updated and review optional permissions in Android settings. This policy does not promise identical behavior for unaudited older builds or guarantee that all device diagnostics are absent.</p>
   <h2>Children</h2>
-  <p>KennyEQ is not directed to children and does not knowingly collect personal information from children.</p>
-
+  <p>KennyEQ is not directed to children.</p>
   <h2>Changes to this policy</h2>
   <p>We may update this policy when app features or legal requirements change. The latest version will be available at this page.</p>
-
   <h2>Contact</h2>
   <p>For questions about this Privacy Policy, contact <a href="mailto:usayan77@icloud.com">usayan77@icloud.com</a>.</p>
 </body>
